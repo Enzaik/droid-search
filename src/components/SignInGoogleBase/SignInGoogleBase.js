@@ -12,21 +12,28 @@ class SignInWithGoogleBase extends Component {
     }
 
     handleClick = e => {
-        this.props.firebase
-            .doSignInWithGoogle()
-            .then(user => {
-                console.log('from component');
-                localStorage.setItem('displayName', user.user.displayName);
-                localStorage.setItem('email', user.user.email);
-                localStorage.setItem('photoURL', user.user.photoURL);
-                window.location = '/home'
-            });
+        if (!this.props.user) {
+            this.props.firebase
+                .doSignInWithGoogle()
+                .then(user => {
+                    console.log('from component');
+                    localStorage.setItem('displayName', user.user.displayName);
+                    localStorage.setItem('email', user.user.email);
+                    localStorage.setItem('photoURL', user.user.photoURL);
+                    window.location = '/home'
+                });
+        }
+        else {
+            alert('no')
+        }
     }
 
 
     render() {
+        console.log('signin props', this.props)
+
         return (
-            <MenuItem onClick={this.handleClick}>Yeah</MenuItem>
+            <MenuItem onClick={this.handleClick}>{this.props.user ? "Sign Out" : "Sign In"}</MenuItem>
         )
 
     }

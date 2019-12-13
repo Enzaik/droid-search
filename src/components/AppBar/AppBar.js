@@ -27,7 +27,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import firebase from 'firebase';
 import { withFirebase } from '../../firebase'
 import { useHistory } from 'react-router-dom';
-import {SignInWithGoogle} from '../SignInGoogleBase/SignInGoogleBase'
+import { SignInWithGoogle } from '../SignInGoogleBase/SignInGoogleBase'
 
 
 
@@ -113,7 +113,7 @@ const useStyles = makeStyles(theme => ({
 
 
 
- function SearchAppBar(props) {
+function SearchAppBar(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const history = useHistory();
   function handleClick() {
@@ -205,8 +205,7 @@ const useStyles = makeStyles(theme => ({
 
   const avatar = (
     <div className={classes.root} onClick={handleMenu}>
-
-      <Avatar alt="Remy Sharp" src={props.pic}  />
+      <Avatar alt="Remy Sharp" src={props.pic} />
     </div>
   );
 
@@ -218,10 +217,10 @@ const useStyles = makeStyles(theme => ({
       open={Boolean(anchorEl)}
       onClose={handleCloseMenu}
     >
-      <MenuItem onClick={login}>Logbfdb In</MenuItem> 
- 
-      <SignInWithGoogle />
-    </Menu> 
+      <MenuItem onClick={login}>Logbfdb In</MenuItem>
+
+      <SignInWithGoogle user={props.user} />
+    </Menu>
   )
 
 
@@ -259,7 +258,7 @@ const useStyles = makeStyles(theme => ({
         {sideList('left')}
       </Drawer>
       <AppBar position="static">
-        
+
         <Toolbar className={classes.toolbar}>
           <IconButton
             edge="start"
@@ -277,6 +276,7 @@ const useStyles = makeStyles(theme => ({
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
+            </div>
             <InputBase
               placeholder="Search..."
               classes={{
@@ -286,7 +286,7 @@ const useStyles = makeStyles(theme => ({
               inputProps={{ 'aria-label': 'search' }}
             />
 
-          </div>
+          
           <IconButton
             aria-label="account of current user"
             aria-controls="menu-appbar"
@@ -295,10 +295,10 @@ const useStyles = makeStyles(theme => ({
             color="inherit"
           >
             {avatar}
-            
+
           </IconButton>
           {menu}
-          
+
         </Toolbar>
       </AppBar>
     </div>
