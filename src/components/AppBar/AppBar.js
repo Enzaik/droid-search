@@ -25,6 +25,7 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 
 import firebase from 'firebase';
+import { withFirebase } from '../../firebase'
 import { useHistory } from 'react-router-dom';
 import {SignInWithGoogle} from '../SignInGoogleBase/SignInGoogleBase'
 
@@ -112,7 +113,7 @@ const useStyles = makeStyles(theme => ({
 
 
 
-export default function SearchAppBar() {
+ function SearchAppBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const history = useHistory();
   function handleClick() {
@@ -301,3 +302,5 @@ export default function SearchAppBar() {
     </div>
   );
 }
+
+export default withFirebase(SearchAppBar)
