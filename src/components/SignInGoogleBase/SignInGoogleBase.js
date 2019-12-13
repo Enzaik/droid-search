@@ -19,7 +19,7 @@ class SignInWithGoogleBase extends Component {
                 localStorage.setItem('displayName', user.user.displayName);
                 localStorage.setItem('email', user.user.email);
                 localStorage.setItem('photoURL', user.user.photoURL);
-                this.props.history.push('/home')
+                window.location = '/home'
             });
     }
 
