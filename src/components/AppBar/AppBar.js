@@ -217,8 +217,6 @@ function SearchAppBar(props) {
       open={Boolean(anchorEl)}
       onClose={handleCloseMenu}
     >
-      <MenuItem onClick={login}>Logbfdb In</MenuItem>
-
       <SignInWithGoogle user={props.user} />
     </Menu>
   )
@@ -294,7 +292,6 @@ function SearchAppBar(props) {
             color="inherit"
           >
             {avatar}
-
           </IconButton>
           {menu}
 
