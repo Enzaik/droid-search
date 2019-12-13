@@ -26,6 +26,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 
 import firebase from 'firebase';
 import { useHistory } from 'react-router-dom';
+import {SignInWithGoogle} from '../SignInGoogleBase/SignInGoogleBase'
 
 
 
@@ -135,7 +136,7 @@ export default function SearchAppBar() {
 
   const login = e => {
     console.log('logging');
-    
+
     setAnchorEl(null);
   }
 
@@ -204,7 +205,7 @@ export default function SearchAppBar() {
   const avatar = (
     <div className={classes.root} onClick={handleMenu}>
 
-      <Avatar alt="Remy Sharp" /*src={userSt} *//>
+      <Avatar alt="Remy Sharp" /*src={userSt} */ />
     </div>
   );
 
@@ -216,8 +217,10 @@ export default function SearchAppBar() {
       open={Boolean(anchorEl)}
       onClose={handleCloseMenu}
     >
-      <MenuItem onClick={login}>Log In</MenuItem>
-    </Menu>
+      <MenuItem onClick={login}>Logbfdb In</MenuItem> 
+ 
+      <SignInWithGoogle />
+    </Menu> 
   )
 
 
@@ -290,8 +293,9 @@ export default function SearchAppBar() {
             color="inherit"
           >
             {avatar}
-            {menu}
+            
           </IconButton>
+          {menu}
         </Toolbar>
       </AppBar>
     </div>
