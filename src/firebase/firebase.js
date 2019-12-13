@@ -60,6 +60,8 @@ class Firebase {
     // });
     return this.auth.signInWithPopup(this.googleProvider);
   }
+
+  doSignOut = () => this.auth.signOut();
 }
 
 export default Firebase;

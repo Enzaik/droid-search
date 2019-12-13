@@ -20,11 +20,16 @@ class SignInWithGoogleBase extends Component {
                     localStorage.setItem('displayName', user.user.displayName);
                     localStorage.setItem('email', user.user.email);
                     localStorage.setItem('photoURL', user.user.photoURL);
-                    window.location = '/home'
+                    window.location = '/home';
                 });
         }
         else {
-            alert('no')
+            this.props.firebase
+            .doSignOut();
+            localStorage.removeItem('displayName');
+            localStorage.removeItem('email');
+            localStorage.removeItem('photoURL');
+            window.location = '/';
         }
     }
 

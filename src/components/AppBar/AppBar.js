@@ -276,22 +276,21 @@ function SearchAppBar(props) {
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
-            </div>
-            <InputBase
-              placeholder="Search..."
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-            />
+          </div>
+          <InputBase
+            placeholder="Search..."
+            classes={{
+              root: classes.inputRoot,
+              input: classes.inputInput,
+            }}
+            inputProps={{ 'aria-label': 'search' }}
+          />
 
-          
+
           <IconButton
             aria-label="account of current user"
             aria-controls="menu-appbar"
             aria-haspopup="true"
-
             color="inherit"
           >
             {avatar}
