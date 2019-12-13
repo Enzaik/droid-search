@@ -113,7 +113,7 @@ const useStyles = makeStyles(theme => ({
 
 
 
- function SearchAppBar() {
+ function SearchAppBar(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const history = useHistory();
   function handleClick() {
@@ -206,7 +206,7 @@ const useStyles = makeStyles(theme => ({
   const avatar = (
     <div className={classes.root} onClick={handleMenu}>
 
-      <Avatar alt="Remy Sharp" /*src={userSt} */ />
+      <Avatar alt="Remy Sharp" src={props.pic}  />
     </div>
   );
 
@@ -259,6 +259,7 @@ const useStyles = makeStyles(theme => ({
         {sideList('left')}
       </Drawer>
       <AppBar position="static">
+        
         <Toolbar className={classes.toolbar}>
           <IconButton
             edge="start"
@@ -297,6 +298,7 @@ const useStyles = makeStyles(theme => ({
             
           </IconButton>
           {menu}
+          
         </Toolbar>
       </AppBar>
     </div>

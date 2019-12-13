@@ -11,16 +11,20 @@ import Home from './pages/Home/Home'
 import AppBar from './components/AppBar/AppBar'
 
 function App() {
+  const [user, setUser] = useState(localStorage.email)
+  const [pic, setPic] = useState(localStorage.photoURL)
 
   useEffect(() => {
-    console.log(localStorage);
+    
+    setUser(localStorage.email)
+    setPic(localStorage.photoURL)
 
   }, [])
 
   return (
     <div className="App">
       <BrowserRouter>
-        <Route path='/' component={AppBar} />
+        <Route path='/' render={props => <AppBar user={user} pic={pic} />} />
         <Route path='/home' component={Home} />
       </BrowserRouter>
     </div>
