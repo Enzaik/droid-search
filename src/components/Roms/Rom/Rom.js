@@ -7,14 +7,20 @@ const useStyles = makeStyles(theme => ({
   root: {
     padding: theme.spacing(3, 2),
     marginTop: '20px',
+
     cursor: 'pointer',
     '& h3': {
       fontFamily: 'Product Sans Remote'
-    }
+    },
+      '&:hover': {
+    backgroundColor: 'rgb(26, 115, 232)',
+    color: 'white'
+  }
   },
+
 }));
 
-export default function Roms({name, description}) {
+export default function Roms({ name, description }) {
   const classes = useStyles();
 
   return (
