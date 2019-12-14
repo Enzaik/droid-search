@@ -2,16 +2,17 @@ import app from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
 
-const config = {
- apiKey: "AIzaSyBoDZVioLcc7rZ7RUwOJfWZzZv4LOcgZMo",
-  authDomain: "enz-droid-search.firebaseapp.com",
-  databaseURL: "https://enz-droid-search.firebaseio.com",
-  projectId: "enz-droid-search",
-  storageBucket: "enz-droid-search.appspot.com",
-  messagingSenderId: "73836873566",
-  appId: "1:73836873566:web:ee4d1268786686618831cf",
-  measurementId: "G-2GCMM0349M"
+const config = { 
+  apiKey: process.env.REACT_APP_FIREBASE_APIKEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTHDOMAIN,
+  databaseURL: process.env.REACT_APP_FIREBASE_DATABASEURL,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECTID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGEBUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGINGSENDERID,
+  appId: process.env.REACT_APP_FIREBASE_APPID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENTID
 };
+
 
 class Firebase {
   constructor() {
