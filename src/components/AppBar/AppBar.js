@@ -274,15 +274,16 @@ function SearchAppBar(props) {
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
+
+            <InputBase
+              placeholder="Search..."
+              classes={{
+                root: classes.inputRoot,
+                input: classes.inputInput,
+              }}
+              inputProps={{ 'aria-label': 'search' }}
+            />
           </div>
-          <InputBase
-            placeholder="Search..."
-            classes={{
-              root: classes.inputRoot,
-              input: classes.inputInput,
-            }}
-            inputProps={{ 'aria-label': 'search' }}
-          />
 
 
           <IconButton
@@ -293,10 +294,11 @@ function SearchAppBar(props) {
           >
             {avatar}
           </IconButton>
-          {menu}
+          
 
         </Toolbar>
       </AppBar>
+      {menu}
     </div>
   );
 }
