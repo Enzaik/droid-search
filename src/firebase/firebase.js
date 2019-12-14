@@ -1,16 +1,16 @@
-import app, { storage } from 'firebase/app';
+import app from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
 
 const config = {
-  apiKey: "AIzaSyBXQmO6YCXpANeIGAoMfdQRg_cNvLr9h60",
-  authDomain: "firetest-af12a.firebaseapp.com",
-  databaseURL: "https://firetest-af12a.firebaseio.com",
-  projectId: "firetest-af12a",
-  storageBucket: "firetest-af12a.appspot.com",
-  messagingSenderId: "414353431827",
-  appId: "1:414353431827:web:356336caee0e29d8704ee6",
-  measurementId: "G-J7Z2R7F87B"
+ apiKey: "AIzaSyBoDZVioLcc7rZ7RUwOJfWZzZv4LOcgZMo",
+  authDomain: "enz-droid-search.firebaseapp.com",
+  databaseURL: "https://enz-droid-search.firebaseio.com",
+  projectId: "enz-droid-search",
+  storageBucket: "enz-droid-search.appspot.com",
+  messagingSenderId: "73836873566",
+  appId: "1:73836873566:web:ee4d1268786686618831cf",
+  measurementId: "G-2GCMM0349M"
 };
 
 class Firebase {
