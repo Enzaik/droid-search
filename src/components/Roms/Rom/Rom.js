@@ -7,6 +7,7 @@ const useStyles = makeStyles(theme => ({
   root: {
     padding: theme.spacing(3, 2),
     marginTop: '20px',
+    cursor: 'pointer',
     '& h3': {
       fontFamily: 'Product Sans Remote'
     }
