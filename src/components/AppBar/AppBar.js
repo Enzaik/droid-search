@@ -22,11 +22,10 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
 
 import firebase from 'firebase';
 import { withFirebase } from '../../firebase'
-import { useHistory } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 import { SignInWithGoogle } from '../SignInGoogleBase/SignInGoogleBase'
 
 
@@ -115,7 +114,7 @@ const useStyles = makeStyles(theme => ({
 
 function SearchAppBar(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const history = useHistory();
+  // const history = useHistory();
   function handleClick() {
     setOpen(true);
   }
@@ -135,25 +134,25 @@ function SearchAppBar(props) {
     setOpen(false);
   }
 
-  const login = e => {
-    console.log('logging');
+  // const login = e => {
+  //   console.log('logging');
 
-    setAnchorEl(null);
-  }
+  //   setAnchorEl(null);
+  // }
 
-  const signOut = () => {
-    firebase.auth().signOut().then(function () {
-      console.log('signout')
-    }).catch(function (error) {
-      // An error happened.
-    });
-    history.push('/login')
-    setAnchorEl(null);
-  }
+  // const signOut = () => {
+  //   firebase.auth().signOut().then(function () {
+  //     console.log('signout')
+  //   }).catch(function (error) {
+  //     // An error happened.
+  //   });
+  //   history.push('/login')
+  //   setAnchorEl(null);
+  // }
 
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
-  const [userSt, setUserSt] = React.useState(false);
+  // const [userSt, setUserSt] = React.useState(false);
   const [state, setState] = React.useState({
     top: false,
     left: false,

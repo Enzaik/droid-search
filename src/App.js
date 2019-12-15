@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import logo from './logo.svg';
 import { BrowserRouter, Route } from 'react-router-dom';
 import { compose } from 'recompose'
 import './App.css';
 
 import { withFirebase } from './firebase'
-import { withAuthentication } from './session'
 import Home from './pages/Home/Home'
 import Roms from './pages/Roms/Roms'
 

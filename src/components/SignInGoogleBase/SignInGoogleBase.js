@@ -21,7 +21,11 @@ class SignInWithGoogleBase extends Component {
                     localStorage.setItem('email', user.user.email);
                     localStorage.setItem('photoURL', user.user.photoURL);
                     window.location = '/home';
-                });
+                }).catch(error =>{
+                
+                        console.log('error', error)
+                    
+                })
         }
         else {
             this.props.firebase
