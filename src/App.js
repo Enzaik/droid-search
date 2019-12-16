@@ -6,15 +6,17 @@ import './App.css';
 import { withFirebase } from './firebase'
 import Home from './pages/Home/Home'
 import Roms from './pages/Roms/Roms'
+import Kernels from './pages/Kernels/Kernels'
 
 import AppBar from './components/AppBar/AppBar'
+import { Switch } from '@material-ui/core';
 
 function App() {
   const [user, setUser] = useState(localStorage.email)
   const [pic, setPic] = useState(localStorage.photoURL)
 
   useEffect(() => {
-    
+
     setUser(localStorage.email)
     setPic(localStorage.photoURL)
 
@@ -26,12 +28,13 @@ function App() {
         <Route path='/' render={props => <AppBar user={user} pic={pic} />} />
         <Route path='/home' component={Home} />
         <Route path='/roms' component={Roms} />
+        <Route path='/kernels' component={Kernels} />
       </BrowserRouter>
     </div>
   );
 }
 
-const MyApp = compose (
+const MyApp = compose(
   withFirebase,
 )(App)
 

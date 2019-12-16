@@ -118,8 +118,9 @@ function SearchAppBar(props) {
   function handleClick(page) {
     if (page === 'roms') {
       history.push('/roms')
-      console.log('props', props);
-
+    }
+    if (page === 'kernels') {
+      history.push('/kernels')
     }
     // setOpen(true);
   }
@@ -190,6 +191,10 @@ function SearchAppBar(props) {
         <ListItem className={classes.item} button key="Roms" onClick={() => handleClick('roms')}>
           <ListItemIcon><PhoneAndroidIcon /></ListItemIcon>
           <ListItemText className={classes.item} primary="Roms" />
+        </ListItem>
+        <ListItem className={classes.item} button key="Kernels" onClick={() => handleClick('kernels')}>
+          <ListItemIcon><PhoneAndroidIcon /></ListItemIcon>
+          <ListItemText className={classes.item} primary="Kernels" />
         </ListItem>
 
         {/* {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
