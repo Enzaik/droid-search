@@ -55,8 +55,8 @@ class Firebase {
       }
     });
 
-    doAddUser = user => {
-       
+  doAddUser = user => {
+
     this.firedb.collection("users").doc(user.email).set({
       name: user.displayName
     })
@@ -74,6 +74,13 @@ class Firebase {
   }
 
   doSignOut = () => this.auth.signOut();
+
+  checkUser = email => {
+   return this.firedb.collection("users").doc(email).collection('subscriptions').get()
+  }
+
 }
+
+
 
 export default Firebase;
