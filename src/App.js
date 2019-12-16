@@ -28,6 +28,18 @@ function App() {
       description: 'Kanged shit'
     }
   ]
+  const kernels = [
+    {
+      id: 'direwolf',
+      name: 'DireWolf Kernel',
+      description: 'Kernel for Redmi 4A created by @LordShenron'
+    },
+    {
+      id: 'infinity',
+      name: 'Infinity Kernel',
+      description: 'One of the first custom kernels'
+    }
+  ]
 
   useEffect(() => {
     setUser(localStorage.email)
@@ -44,7 +56,7 @@ function App() {
         <Route path='/' render={props => <AppBar user={user} pic={pic} onChange={changeHandler} value={searchText} />} />
         <Route path='/home' component={Home} />
         <Route path='/roms' render={() => <Roms text={searchText} roms={roms} />} />
-        <Route path='/kernels' component={Kernels} />
+        <Route path='/kernels' render={() => <Kernels text={searchText} kernels={kernels} />} />
       </BrowserRouter>
     </div>
   );

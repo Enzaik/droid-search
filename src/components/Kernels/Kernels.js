@@ -5,7 +5,7 @@ import Kernel from './Kernel/Kernel'
 
 
 
-export default function Kernels() {
+export default function Kernels(props) {
   const useStyles = makeStyles(theme => ({
     root: {     
         fontFamily: 'Product Sans Remote'      
@@ -17,8 +17,13 @@ export default function Kernels() {
   return (
     <>
     <h1 className={classes.root} >Kernels</h1>
-      <Kernel name="DireWolf Kernel" description="DireWolf Kernel description" />
-      <Kernel name="Infinity Kernel" description="Infinity Kernel description" />
+    {props.kernels.filter(kernel => {
+        console.log(kernel.name.toLowerCase().includes(props.text.toLowerCase()))
+       return kernel.name.toLowerCase().includes(props.text.toLowerCase())
+      })
+        .map(({ id, name, description }) => (
+          <Kernel name={name} description={description} />
+        ))}
     </>
   )
 }

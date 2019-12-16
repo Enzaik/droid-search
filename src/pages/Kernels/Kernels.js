@@ -5,18 +5,17 @@ import Container from '@material-ui/core/Container';
 import Kernels from '../../components/Kernels/Kernels'
 
 const kernels = (props) => {
-    
+
     return (
         <>
             <CssBaseline />
             <Container maxWidth="sm">
-                
-                <Kernels />
+                <Kernels {...props}/>
             </Container>
         </>
 
-       
-     );
+
+    );
 }
 
 export default kernels;
