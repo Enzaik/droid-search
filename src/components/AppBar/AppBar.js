@@ -22,10 +22,10 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import Menu from '@material-ui/core/Menu';
-
+import PhoneAndroidIcon from '@material-ui/icons/PhoneAndroid';
 import firebase from 'firebase';
 import { withFirebase } from '../../firebase'
-// import { useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { SignInWithGoogle } from '../SignInGoogleBase/SignInGoogleBase'
 
 
@@ -114,9 +114,14 @@ const useStyles = makeStyles(theme => ({
 
 function SearchAppBar(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
-  // const history = useHistory();
-  function handleClick() {
-    setOpen(true);
+  const history = useHistory();
+  function handleClick(page) {
+    if (page === 'roms') {
+      history.push('/roms')
+      console.log('props', props);
+
+    }
+    // setOpen(true);
   }
   const handleMenu = event => {
     setAnchorEl(event.currentTarget);
@@ -178,17 +183,21 @@ function SearchAppBar(props) {
       onKeyDown={toggleDrawer(side, false)}
     >
       <List >
-        <ListItem className={classes.item} button key="Subscription" onClick={handleClick}>
+        <ListItem className={classes.item} button key="Subscription" onClick={() => handleClick('home')}>
           <ListItemIcon><CardMembershipOutlinedIcon /></ListItemIcon>
           <ListItemText className={classes.item} primary="Subscriptions" />
         </ListItem>
+        <ListItem className={classes.item} button key="Roms" onClick={() => handleClick('roms')}>
+          <ListItemIcon><PhoneAndroidIcon /></ListItemIcon>
+          <ListItemText className={classes.item} primary="Roms" />
+        </ListItem>
 
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+        {/* {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
           <ListItem className={classes.item} button key={text} onClick={handleClick}>
             <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
             <ListItemText className={classes.item} primary={text} />
           </ListItem>
-        ))}
+        ))} */}
       </List>
       <Divider />
       <List>
@@ -293,7 +302,7 @@ function SearchAppBar(props) {
           >
             {avatar}
           </IconButton>
-          
+
 
         </Toolbar>
       </AppBar>
