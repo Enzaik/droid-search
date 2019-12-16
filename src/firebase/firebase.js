@@ -1,6 +1,7 @@
 import app from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
+import 'firebase/firestore';
 
 const config = {
   apiKey: "AIzaSyBoDZVioLcc7rZ7RUwOJfWZzZv4LOcgZMo",
@@ -13,20 +14,6 @@ const config = {
   measurementId: "G-2GCMM0349M"
 };
 
-/*
-
-    apiKey: "AIzaSyBoDZVioLcc7rZ7RUwOJfWZzZv4LOcgZMo",
-    authDomain: "enz-droid-search.firebaseapp.com",
-    databaseURL: "https://enz-droid-search.firebaseio.com",
-    projectId: "enz-droid-search",
-    storageBucket: "enz-droid-search.appspot.com",
-    messagingSenderId: "73836873566",
-    appId: "1:73836873566:web:ee4d1268786686618831cf",
-    measurementId: "G-2GCMM0349M"
-
-
-*/
-
 
 class Firebase {
   constructor() {
@@ -35,9 +22,8 @@ class Firebase {
 
     this.auth = app.auth();
     this.db = app.database();
-
+    this.firedb = app.firestore();
     this.googleProvider = new app.auth.GoogleAuthProvider();
-
   }
 
   onAuthUserListener = (next, fallback) =>
@@ -68,12 +54,24 @@ class Firebase {
         fallback();
       }
     });
+
+  tmpCheckDoc = user => {
+    const test = this.firedb.collection("users").doc('lolita');
+    console.log('test', user.email);
+
+    this.firedb.collection("users").doc(user.email).set({
+      name: user.displayName
+    })
+      .then(function (docRef) {
+        window.location = '/home';
+      })
+      .catch(function (error) {
+        console.error("Error adding document: ", error);
+      });
+
+  }
+
   doSignInWithGoogle = () => {
-    // this.auth.signInWithPopup(this.googleProvider).then(user => {
-    //   localStorage.setItem('displayName', user.user.displayName);
-    //   localStorage.setItem('email', user.user.email);
-    //   localStorage.setItem('photoURL', user.user.photoURL);
-    // });
     return this.auth.signInWithPopup(this.googleProvider);
   }
 
