@@ -290,6 +290,8 @@ function SearchAppBar(props) {
 
             <InputBase
               placeholder="Search..."
+              onChange={props.onChange}
+              value={props.value}
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput,

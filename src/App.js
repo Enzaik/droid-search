@@ -14,6 +14,7 @@ import { Switch } from '@material-ui/core';
 function App() {
   const [user, setUser] = useState(localStorage.email)
   const [pic, setPic] = useState(localStorage.photoURL)
+  const [searchText, setSearchText] = useState('');
 
   useEffect(() => {
 
@@ -21,13 +22,18 @@ function App() {
     setPic(localStorage.photoURL)
 
   }, [])
+  const changeHandler = (e) => {
+    setSearchText(e.target.value)
+    console.log('changing', searchText);
+    
+  }
 
   return (
     <div className="App">
       <BrowserRouter>
-        <Route path='/' render={props => <AppBar user={user} pic={pic} />} />
+        <Route path='/' render={props => <AppBar user={user} pic={pic} onChange={changeHandler} value={searchText}/>} />
         <Route path='/home' component={Home} />
-        <Route path='/roms' component={Roms} />
+        <Route path='/roms' render={text=> <Roms text={text} />} />
         <Route path='/kernels' component={Kernels} />
       </BrowserRouter>
     </div>
