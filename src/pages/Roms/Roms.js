@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 
 import Roms from '../../components/Roms/Roms'
 
-const roms = (props) => {
+const Rroms = (props) => {
+
 
     return (
         <>
             <CssBaseline />
             <Container maxWidth="sm">
-                <Roms />
+                <Roms {...props}/>
             </Container>
         </>
 
@@ -18,4 +19,4 @@ const roms = (props) => {
     );
 }
 
-export default roms;
+export default Rroms;

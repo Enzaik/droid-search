@@ -16,24 +16,34 @@ function App() {
   const [pic, setPic] = useState(localStorage.photoURL)
   const [searchText, setSearchText] = useState('');
 
-  useEffect(() => {
+  const roms = [
+    {
+      id: 'superior',
+      name: 'Superior',
+      description: 'Superior rom description'
+    },
+    {
+      id: 'habhok',
+      name: 'Habhok',
+      description: 'Kanged shit'
+    }
+  ]
 
+  useEffect(() => {
     setUser(localStorage.email)
     setPic(localStorage.photoURL)
 
   }, [])
   const changeHandler = (e) => {
     setSearchText(e.target.value)
-    console.log('changing', searchText);
-    
   }
 
   return (
     <div className="App">
       <BrowserRouter>
-        <Route path='/' render={props => <AppBar user={user} pic={pic} onChange={changeHandler} value={searchText}/>} />
+        <Route path='/' render={props => <AppBar user={user} pic={pic} onChange={changeHandler} value={searchText} />} />
         <Route path='/home' component={Home} />
-        <Route path='/roms' render={text=> <Roms text={text} />} />
+        <Route path='/roms' render={() => <Roms text={searchText} roms={roms} />} />
         <Route path='/kernels' component={Kernels} />
       </BrowserRouter>
     </div>
