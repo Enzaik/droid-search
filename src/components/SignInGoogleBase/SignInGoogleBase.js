@@ -16,7 +16,6 @@ class SignInWithGoogleBase extends Component {
             this.props.firebase
                 .doSignInWithGoogle()
                 .then(user => {
-                    console.log('from component');
                     localStorage.setItem('displayName', user.user.displayName);
                     localStorage.setItem('email', user.user.email);
                     localStorage.setItem('photoURL', user.user.photoURL);
