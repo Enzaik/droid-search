@@ -2,7 +2,7 @@ import app from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
 
-const config = { 
+const config = {
   apiKey: "AIzaSyBoDZVioLcc7rZ7RUwOJfWZzZv4LOcgZMo",
   authDomain: "enz-droid-search.firebaseapp.com",
   databaseURL: "https://enz-droid-search.firebaseio.com",
@@ -31,8 +31,6 @@ const config = {
 class Firebase {
   constructor() {
     app.initializeApp(config);
-    console.log('apikey', config.apiKey);
-    
     app.analytics();
 
     this.auth = app.auth();

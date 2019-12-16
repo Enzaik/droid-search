@@ -21,15 +21,13 @@ class SignInWithGoogleBase extends Component {
                     localStorage.setItem('email', user.user.email);
                     localStorage.setItem('photoURL', user.user.photoURL);
                     window.location = '/home';
-                }).catch(error =>{
-                
-                        console.log('error', error)
-                    
+                }).catch(error => {
+                    console.log('error', error)
                 })
         }
         else {
             this.props.firebase
-            .doSignOut();
+                .doSignOut();
             localStorage.removeItem('displayName');
             localStorage.removeItem('email');
             localStorage.removeItem('photoURL');
@@ -39,8 +37,6 @@ class SignInWithGoogleBase extends Component {
 
 
     render() {
-        console.log('signin props', this.props)
-
         return (
             <MenuItem onClick={this.handleClick}>{this.props.user ? "Sign Out" : "Sign In"}</MenuItem>
         )
