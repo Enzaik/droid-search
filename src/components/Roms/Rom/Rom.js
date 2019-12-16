@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
 
 }));
 
-export default function Roms({ name, description }) {
+export default function Rom({ name, description }) {
   const classes = useStyles();
 
   return (
