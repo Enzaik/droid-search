@@ -4,7 +4,7 @@ import Container from '@material-ui/core/Container';
 
 import Kernels from '../../components/Kernels/Kernels'
 
-const roms = (props) => {
+const kernels = (props) => {
     
     return (
         <>
@@ -19,4 +19,4 @@ const roms = (props) => {
      );
 }
 
-export default roms;
+export default kernels;
