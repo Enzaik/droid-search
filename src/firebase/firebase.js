@@ -55,10 +55,8 @@ class Firebase {
       }
     });
 
-  tmpCheckDoc = user => {
-    const test = this.firedb.collection("users").doc('lolita');
-    console.log('test', user.email);
-
+    doAddUser = user => {
+       
     this.firedb.collection("users").doc(user.email).set({
       name: user.displayName
     })

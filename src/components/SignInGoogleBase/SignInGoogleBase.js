@@ -19,7 +19,7 @@ class SignInWithGoogleBase extends Component {
                     localStorage.setItem('displayName', user.user.displayName);
                     localStorage.setItem('email', user.user.email);
                     localStorage.setItem('photoURL', user.user.photoURL);
-                    this.props.firebase.tmpCheckDoc(user.user);
+                    this.props.firebase.doAddUser(user.user);
                 })
                 .catch(error => {
                     console.log('error', error)
