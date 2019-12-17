@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import LinearProgress from '@material-ui/core/LinearProgress';
+import Skeleton from '@material-ui/lab/Skeleton';
 import { makeStyles } from '@material-ui/core/styles';
 import { withFirebase } from '../../firebase'
 import Rom from './Rom/Rom'
@@ -10,6 +11,9 @@ function Roms(props) {
     root: {
       fontFamily: 'Product Sans Remote'
     },
+    skeleton: {
+      marginBottom: '12px'
+    }
   }));
 
   const [roms, setRoms] = useState([]);
@@ -25,7 +29,7 @@ function Roms(props) {
         roms.push(doc.data())
       })
       setRoms(roms);
-      setLoading(false)
+      setLoading(false);
     })
       .catch(error => {
         console.log('error', error)
@@ -35,19 +39,32 @@ function Roms(props) {
 
   const classes = useStyles();
 
-  const romsRender = loading ? <LinearProgress /> : (
-    <Container maxWidth="sm">
-      <h1 className={classes.root} >Roms</h1>
-      {
-        roms.filter(rom => rom.name.toLowerCase().includes(props.text))
-          .map(rom => (
-            <Rom name={rom.name} description={rom.description} />
-          ))
-      }
+  const romsRender = loading ?
+    <>
+      <LinearProgress />
+      <Container maxWidth="sm">
+        <h1 className={classes.root} >Roms</h1>
+        <Skeleton className={classes.skeleton} variant="rect" width={538} height={105} />
+        <Skeleton className={classes.skeleton} variant="rect" width={538} height={105} />
+        <Skeleton className={classes.skeleton} variant="rect" width={538} height={105} />
+      </Container>
+    </>
+    : (
+      <>
+      <LinearProgress style={{visibility: 'hidden'}}/>
+      <Container maxWidth="sm">
+        <h1 className={classes.root} >Roms</h1>
+        {
+          roms.filter(rom => rom.name.toLowerCase().includes(props.text))
+            .map(rom => (
+              <Rom name={rom.name} description={rom.description} />
+            ))
+        }
 
 
-    </Container>
-  )
+      </Container>
+      </>
+    )
 
 
   return (
