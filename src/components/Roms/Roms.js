@@ -55,7 +55,7 @@ function Roms(props) {
       <Container maxWidth="sm">
         <h1 className={classes.root} >Roms</h1>
         {
-          roms.filter(rom => rom.name.toLowerCase().includes(props.text))
+          roms.filter(rom => rom.name.toLowerCase().includes(props.text.toLowerCase()))
             .map(rom => (
               <Rom name={rom.name} description={rom.description} />
             ))
