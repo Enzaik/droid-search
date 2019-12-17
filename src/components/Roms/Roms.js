@@ -37,27 +37,25 @@ function Roms(props) {
 
   const romsRender = loading ? <LinearProgress /> : (
     <Container maxWidth="sm">
-
       <h1 className={classes.root} >Roms</h1>
-     {
-     roms.filter(rom => rom.name.toLowerCase().includes(props.text))
-        .map(rom => (
-      <Rom name={rom.name} description={rom.description} />
-      ))
-       
-     } 
+      {
+        roms.filter(rom => rom.name.toLowerCase().includes(props.text))
+          .map(rom => (
+            <Rom name={rom.name} description={rom.description} />
+          ))
+      }
 
 
-      </Container>
+    </Container>
   )
 
 
   return (
-    <div>
+    <>
       {
         romsRender
       }
-    </div>
+    </>
   )
 }
 
