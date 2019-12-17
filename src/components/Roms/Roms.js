@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import LinearProgress from '@material-ui/core/LinearProgress';
 import { makeStyles } from '@material-ui/core/styles';
 import { withFirebase } from '../../firebase'
-
 import Rom from './Rom/Rom'
+import { Container } from '@material-ui/core';
 
 function Roms(props) {
   const useStyles = makeStyles(theme => ({
@@ -11,7 +12,8 @@ function Roms(props) {
     },
   }));
 
-  const [roms, setRoms] = useState([])
+  const [roms, setRoms] = useState([]);
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     let roms = [];
@@ -23,6 +25,7 @@ function Roms(props) {
         roms.push(doc.data())
       })
       setRoms(roms);
+      setLoading(false)
     })
       .catch(error => {
         console.log('error', error)
@@ -31,16 +34,28 @@ function Roms(props) {
   }, [])
 
   const classes = useStyles();
- 
+
+  const romsRender = loading ? <LinearProgress /> : (
+    <Container maxWidth="sm">
+
+      <h1 className={classes.root} >Roms</h1>
+     {
+     roms.filter(rom => rom.name.toLowerCase().includes(props.text))
+        .map(rom => (
+      <Rom name={rom.name} description={rom.description} />
+      ))
+       
+     } 
+
+
+      </Container>
+  )
+
+
   return (
     <div>
-      <h1 className={classes.root} >Roms</h1>
       {
-        roms.filter(rom => rom.name.toLowerCase().includes(props.text))
-        .map(rom => (
-          <Rom name={rom.name} description={rom.description} />
-        ))
-
+        romsRender
       }
     </div>
   )
